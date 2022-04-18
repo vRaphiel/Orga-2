@@ -7,7 +7,7 @@ all: app
 app: main.o
 	$(CC) $(CFLAGS) $^ -o $@
 
-main.o: main.c
+main.o: main.c cliente.c cliente.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
 .PHONY: clean
