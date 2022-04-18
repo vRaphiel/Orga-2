@@ -1,0 +1,26 @@
+AS		:= nasm
+ASFLAGS	:= -f elf64 -F DWARF -g -Wall
+
+CC		:= gcc
+CFLAGS	:= -Wall -Wextra -pedantic -g
+
+TARGET 	:= suma
+
+.PHONY: all
+all: $(TARGET)
+
+# Compilar Assembly
+fun.o: fun.asm
+	$(AS) $(ASFLAGS) $<
+
+main.o: main.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+# Crear ejecutable
+$(TARGET): main.o fun.o
+	$(CC) $(CFLAGS) $^ -o $@
+
+# Clean directorio
+.PHONY: clean
+clean:
+	rm -rf *.o $(TARGET)
