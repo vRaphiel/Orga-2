@@ -28,6 +28,8 @@ llamadora:
     add rsi, [rax]
     mov rax, rsi
 
+    pop
+
     pop rbp
     ret
 
